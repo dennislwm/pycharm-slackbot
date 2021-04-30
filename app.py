@@ -7,9 +7,9 @@ from slackeventsapi import SlackEventAdapter
 
 app = Flask(__name__)
 
-slack_events_adapter = SlackEventAdapter(os.environ.get("SLACK_EVENTS_TOKEN"), "/slack/events", app)
+slack_events_adapter = SlackEventAdapter(os.getenv("SLACK_EVENTS_TOKEN"), "/slack/events, app)
 
-slack_web_client = WebClient(token=os.environ.get("SLACKBOT_TOKEN"))
+slack_web_client = WebClient(token=os.getenv("SLACKBOT_TOKEN"))
 
 MESSAGE_BLOCK = {
     "type": "section",
@@ -44,4 +44,4 @@ def message(payload):
         return slack_web_client.chat_postMessage(**message_to_send)
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=8080)
+    app.run(host="0.0.0.0", port=80)
